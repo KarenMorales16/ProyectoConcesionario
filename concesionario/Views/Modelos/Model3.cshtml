@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Model3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <img src="~/FotosCarros/Modelo3/Mod3.jpg" width="100%" height="850px" />
+        <input type="button" class="btn btn-outline-primary" value="Ordenar" id="Ordenar" />
+    </div>
+
+<div class="card-body ">
+    <ul class="nav nav-pills nav-pills-info " role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#Autonomia" role="tablist">
+                Autonomia
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Exterior" role="tablist">
+                Exterior
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Permornance" role="tablist">
+                Performance
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Carga" role="tablist">
+                Carga
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content tab-space">
+        <div class="tab-pane active" id="Autonomia">
+            <img src="~/FotosCarros/Modelo3/modelo3.gif"  width="800px" height="500px" />
+        </div>
+        <div class="tab-pane" id="Exterior">
+            <img src="~/FotosCarros/Modelo3/modelo03.gif" width="800px" height="500px" />
+        </div>
+        <div class="tab-pane" id="Permornance">
+            <img src="~/FotosCarros/Modelo3/modelo3P.jpg" width="800px" height="500px" />
+        </div>
+        <div class="tab-pane" id="Carga">
+            <img src="~/FotosCarros/Modelo3/modelo3C.jpg" width="800px" height="500px" />
+        </div>
+    </div>
+</div>
+<script>
+    $("#Ordenar").click(function () {
+        window.location.href = "/Ordenar/Index3";
+    });
+</script>

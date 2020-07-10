@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout Empleado.cshtml";
+}
+@*<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text h4">
+                <div class="card-icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <h4 class="card-title">Abonos</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        @Html.EJS().Grid("Grid").AllowResizing(true).AllowTextWrap().AllowSorting().AllowFiltering().Width("auto").AllowResizing().Columns(col =>
+                        {
+                            col.Field("id_Bitacora").HeaderText("Numero de recibo").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Visible(true).Add();
+                            col.Field("Nombre").HeaderText("Nombre").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("FechaDePago").HeaderText("FechaDePago").Format("yMd").Type("Date").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Abono").HeaderText("Abono").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("PagoMinimo").HeaderText("PagoMinimo").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("IdVentaAuto").HeaderText("IdVentaAuto").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Restante").HeaderText("Restante").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("IdCliente").HeaderText("IdCliente").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.HeaderText("Agregar").Template("#Opciones2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                        }).AllowPaging().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Single)).PageSettings(page => page.PageSize(10)).Locale("es-mx").Render()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="Opciones2" type="text/x-template">
+    <div class="btn-group">
+        @*<a class="text-info" href="javascript:void(0)" onclick="Abonar()" data-toggle="tooltip" data-placement="top" title="Abonar">
+            <i class="material-icons">local_atm</i>
+        </a>*@
+        <a class="text-info" href="javascript:void(0)" onclick="Abonar(${ id_Bitacora }, ${PagoMinimo})" data-toggle="tooltip" data-placement="top" title="Abonar">
+            <i class="material-icons">local_atm</i>
+        </a>
+    </div>
+</script>
+
+<div class="modal fade" id="ModalCantidad" tabindex="-1" role="dialog" aria-labelledby="ModalCantidad" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cantidad a Abonar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Ingresar abono" id="txtcantidad" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btncancelar">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnaceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Abonar(id_Bitacora, PagoMinimo) {
+        //var grid = document.getElementById("Grid").ej2_instances[0];
+        //var id_Bitacora = grid.getSelectedRecords()[0].id_Bitacora;
+        //var PagoMinimo = grid.getSelectedRecords()[0].PagoMinimo;
+
+        $("#ModalCantidad").modal("show");
+
+        $("#btncancelar").click(function () {
+            $("#ModalCantidad").modal("hide");
+        });
+
+        $("#txtcantidad").val(PagoMinimo);
+
+        $("#btnaceptar").click(function () {
+            $("#ModalCantidad").modal("hide");
+            PagoMinimo = $("#txtcantidad").val();
+            var NPM = parseFloat(PagoMinimo);
+            AbonarConfirm(id_Bitacora, NPM);
+        });
+    }
+    function AbonarConfirm(id_Bitacora, PagoMinimo) {
+         $.ajax({
+             url: '@Url.Action("Abonar", "Empleado")',
+             type: "get",
+             data: { id_Bitacora: id_Bitacora, PagoMinimo: PagoMinimo },
+             async: false,
+                success: function (data) {
+                       switch (data.value) {
+                                   case 1:
+                                         swal("Correcto", "Abono realizado con exito!", "success");
+                                         location.reload();
+                                         break;
+                                     case 2:
+                                         swal("Error", "No puede realizar un pago menor al esteblecido en el contrato!", "info");
+                                         break;
+                                     case 3:
+                                         swal("Error", "No puede realizar dos pagos al mismo recibo!", "error");
+                                         break;
+                                     case 0:
+                                         swal("Error", "Ocurrio un error!", "error");
+                                         break;
+                                     default:
+                                         break;
+                       }
+
+                }
+         });
+
+    }
+    $(function () {
+        $.get('@Url.Action("gridabono", "Empleado")', function (data) {
+            var grid = document.getElementById('Grid').ej2_instances[0]; // Grid instance
+            grid.dataSource = JSON.parse(data);
+        });
+    });
+</script>

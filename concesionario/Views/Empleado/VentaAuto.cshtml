@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout Empleado.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text h4">
+                <div class="card-icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <h4 class="card-title">Completar venta</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.EJS().Grid("Grid").AllowResizing(true).AllowTextWrap().AllowSorting().AllowFiltering().Width("auto").AllowResizing().Columns(col =>
+                        {
+                            col.Field("IdVentaAuto").HeaderText("IdVentaAuto").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Visible(false).Add();
+                            col.Field("Nombre").HeaderText("Cliente").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Carro").HeaderText("Carro").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Anio").HeaderText("Año").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Telefono").HeaderText("Telefono").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("TelefonoCasa").HeaderText("Telefono Casa").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Correo").HeaderText("Correo").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.HeaderText("Terminar Compra").Template("#Opciones2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                        }).AllowPaging().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Single)).PageSettings(page => page.PageSize(10)).Locale("es-mx").Render()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="Opciones2" type="text/x-template">
+    <div class="btn-group">
+        <a class="text-info" href="javascript:void(0)" onclick="Completar(${IdVentaAuto})" data-toggle="tooltip" data-placement="top" title="Completar Complra">
+            <i class="far fa-handshake"></i>
+        </a>
+    </div>
+</script>
+
+
+<script>
+    function Completar(IdVentaAuto) {
+        swal("Se completara la compra", "El auto se entregara al cliente", "info", {
+            buttons: {
+                cancelar: {
+                    text: "Cancelar"
+                },
+                agregar: {
+                    text: "Agregar"
+                },
+            },
+        }).then((value) => {
+                switch (value) {
+
+                    case "cancelar":
+                        swal("Procedo no se completo", "", "warning");
+
+                        break;
+
+                    case "agregar":
+
+                         $.ajax({
+                              url: '@Url.Action("Completado", "Empleado")',
+                              type: "post",
+                               data: { IdVentaAuto: IdVentaAuto},
+                              async: false,
+                               success: function (data) {
+                                   if (data.value == 1) {
+                                       swal("Felicidades", "El auto fue vendido y entregado con exito!", "success");
+                                       location.reload();
+                                   } else {
+                                       swal("Error", "Ocurrio un error!", "error");
+
+                                   }
+                               }
+                            });
+
+                        break;
+                }
+        });
+
+
+    }
+
+    $(function () {
+        $.get('@Url.Action("gridVentaAuto", "Empleado")', function (data) {
+            var grid = document.getElementById('Grid').ej2_instances[0]; // Grid instance
+            grid.dataSource = JSON.parse(data);
+        });
+    });
+</script>

@@ -1,0 +1,408 @@
+﻿@model concesionario.Models.PedirModelos.CarroOrdenar
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .contenedor {
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+    }
+</style>
+
+@using (Ajax.BeginForm("IndexC", "Ordenar", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "frmCO", OnSuccess = "SuccessCO", OnBegin = "BeginCOC" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <div class="card-body ">
+            <ul class="nav nav-pills nav-pills-info nav-fill " role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#Personalizar" role="tablist">
+                        Personalizar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Pago" role="tablist">
+                        Pago
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content tab-space">
+                <div class="tab-pane active" id="Personalizar">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img src="~/FotosCarros/cybertruck.jpg" />
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <label>Color</label>
+                                        @Html.DropDownListFor(model => model.IdColor, new SelectList(ViewBag.Color, "IdColor", "Color"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Performance</label>
+                                        @Html.DropDownListFor(model => model.IdPerformance, new SelectList(ViewBag.Performance, "IdPerformance", "Performance"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Año  $</label>
+                                        @Html.DropDownListFor(model => model.IdAuto, new SelectList(ViewBag.Anio, "IdAutos", "Precio"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="Pago">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contenedor">
+                                <h3>Datos Personales</h3>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Nombre</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Apellido Paterno</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.ApP, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Apellido Materno</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.ApM, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Edad</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Fecha Nacimiento</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.FechaDeNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Sexo</label>
+                                            <span class="material-input">
+                                                @Html.DropDownListFor(model => model.Sexo, new SelectList(ViewBag.Sexo, "IdSexo", "Sexo"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">RFC</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Direccion</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">CP</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.CP, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Telefono</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Telefono Casa</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.TelefonoCasa, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Correo</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <h3>Aval</h3>
+                                    <hr class="col-md-11" />
+
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Nombre del Aval</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.NombreAval, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Apellido Paterno</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.ApPAval, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Apellido Materno</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.ApMAval, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Telefono</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.TelefonoAval, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contenedor">
+                                <h3>Datos Financieros</h3>
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">  Nombre Que Aparece En La Tarjeta  </label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.NombreEnTC, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"> Número De Tarjeta De Crédito</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.NoTarjetaC, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"> Mes De Expiración</label>
+                                            <span class="material-input">
+                                                @Html.DropDownListFor(model => model.IdMesExpiracion, new SelectList(ViewBag.IdMesExpiracion, "IdMesExpiracion", "MesExpiracion"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"> Fecha De Expiración</label>
+                                            <span class="material-input">
+                                                @Html.DropDownListFor(model => model.IdFechaExpiracion, new SelectList(ViewBag.IdFechaExpiracion, "IdFechaExpiracion", "FechaExpiracion"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"> CVV</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"> Código Postal De Facturación</label>
+                                            <span class="material-input">
+                                                @Html.EditorFor(model => model.CPFacturacion, new { htmlAttributes = new { @class = "form-control" } })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Tiempo de Pago</label>
+                                                @Html.DropDownListFor(model => model.IdTiempoDePago, new SelectList(ViewBag.IdTiempodePago, "IdTiempo", "Tiempo"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Sucursal</label>
+                                            <span class="material-input">
+                                                @Html.DropDownListFor(model => model.IdSucursal, new SelectList(ViewBag.Sucursal, "IdSucursal", "Sucursal"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Abono</label>
+                                            <span class="material-input">
+                                                @Html.Editor("Abono", new { htmlAttributes = new { @class = "form-control", @style = " background-color:white;", @disabled = "disabled" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Precio</label>
+                                            <span class="material-input">
+                                                @Html.Editor("Precio", new { htmlAttributes = new { @class = "form-control", @style = " background-color:white;", @disabled = "disabled" } })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Engache</label>
+                                            <span class="material-input">
+                                                @Html.Editor("Enganche", new { htmlAttributes = new { @class = "form-control", @style = " background-color:white;", @disabled = "disabled" } })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Aceptar" class="btn btn-outline-success pull-right" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+   
+    var Precio = 349900;
+    $("#IdAuto").change(function () {
+        var Preciot = $(this).find('option:selected').text();
+        Precio = parseFloat(Preciot.split(' $').pop());
+
+    });
+    var Performance = 0;
+    $("#IdPerformance").change(function () {
+        var Performancet = $(this).find('option:selected').text();
+        Performance = parseFloat(Performancet.split(' $').pop());
+
+    });
+
+
+    var Color = 0;
+    $("#IdColor").change(function () {
+        var Colort = $(this).find('option:selected').text();
+        Color = parseFloat(Colort.split(' $').pop());
+
+    });
+
+
+
+    var Abono;
+    var Enganche;
+    var PrecioAuto;
+    var suma = 0;
+    var EngancheF = 0;
+    $("#IdTiempoDePago").change(function () {
+        //Años
+        suma = Precio + Performance + Color;
+        var TiempoA = $(this).find('option:selected').text();
+        var TiempoP = TiempoA.substr(0, 1)
+
+        if (TiempoP == 3) {
+            PrecioAuto = (suma * 0.30) + suma;
+            Abono = PrecioAuto / (3 * 12);
+
+        }
+        if (TiempoP == 5) {
+            PrecioAuto = (suma * 0.35) + suma;
+            Abono = PrecioAuto / (5 * 12);
+        }
+        if (TiempoP == 7) {
+            PrecioAuto = (suma * 0.40) + suma;
+            Abono = PrecioAuto / (7 * 12);
+        }
+        Enganche = (PrecioAuto * 0.30);
+
+        $("#Precio").val(PrecioAuto.toFixed(3));
+        $("#Abono").val(Abono.toFixed(3));
+        $("#Enganche").val(Enganche.toFixed(3));
+    });
+
+    function SuccessCO(data, status, jqXHR) {
+        switch (data.value) {
+            case 1:
+                Swal.fire(
+                    'Correcto!',
+                    data.messen,
+                    'success'
+                );
+                location.reload();
+                break;
+
+            default:
+                break;
+        }
+
+    };
+    function BeginCOC() {
+
+    }
+</script>

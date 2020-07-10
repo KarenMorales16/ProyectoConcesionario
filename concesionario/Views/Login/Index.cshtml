@@ -1,0 +1,222 @@
+﻿@model concesionario.Models.Login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="~/FotosCarros/TeslaLogo.png">
+    <link rel="icon" type="image/png" href="~/FotosCarros/TeslaLogo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Tesla
+    </title>
+
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <!--   Core JS Files   -->
+
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Plugin for the momentJs  -->
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <!--  Plugin for Sweet Alert -->
+    <script src="../assets/js/plugins/sweetalert2.js"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+    <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+    <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+    <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+    <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!-- Library for adding dinamically elements -->
+    <script src="../assets/js/plugins/arrive.min.js"></script>
+
+    <!-- Chartist JS -->
+    <script src="../assets/js/plugins/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <link href="~/Content/ej2/material.css" rel="stylesheet" />
+    <script src="~/Scripts/ej2/ej2.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style media="screen">
+        
+        .loader{
+            position:fixed;
+            z-index:99;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+    </style>
+</head>
+
+<body class="off-canvas-sidebar">
+    <div id="frmAdmLogin">
+        @using (Ajax.BeginForm("Login", "login", new AjaxOptions { LoadingElementId="Carga",OnBegin="sale", HttpMethod = "POST", OnSuccess = "OnSuccessAdmLogin", OnFailure = "OnFailureAdmLogin" }, new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+
+            <div class="wrapper wrapper-full-page">
+                <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../FotosCarros/models.jpg'); background-size: cover; background-position: top center; opacity:.8">
+                    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+                                <form class="form" method="" action="">
+                                    <div class="card card-login ">
+                                        <div class="card-header card-header-info text-center">
+                                            <h4 class="card-title">Login</h4>
+
+                                        </div>
+                                        <div class="card-body ">
+
+                                            <span class="bmd-form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="material-icons">face</i>
+                                                        </span>
+                                                    </div>
+                                                    @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15", placeholder = "Usuario", autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                                                </div>
+                                            </span>
+                                            <span class="bmd-form-group">
+                                                <div id="Carga" style="display:none;">
+                                                    <img src="~/FotosCarros/loading.svg" />
+                                                </div>
+                                            </span>
+                                            <span class="bmd-form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="material-icons">lock_outline</i>
+                                                        </span>
+                                                    </div>
+                                                    @Html.PasswordFor(m => m.Contra, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15 mb-3", placeholder = "Contraseña", autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(m => m.Contra, "", new { @class = "text-danger" })
+                                                </div>
+                                            </span>
+
+                         
+                                        </div>
+
+                                        <div class="row card-footer justify-content-center">
+                                            <input class="btn btn-md btn-block u-btn-primary rounded g-py-13" type="submit" value="Inicia Sesión">
+
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="container">
+                            <nav class="float-left">
+                                <ul>
+                                        <li>
+                                            Karen Nohemi Morales Galindo,
+                                        </li>
+                                        <li>
+                                            Jesús Eduardo Escobedo Díaz
+                                        </li>                                      
+                                    </ul>
+                            </nav>
+                            <div class="copyright float-right">
+                                &copy;
+                                <script>document.write(new Date().getFullYear())</script>, contrato de privacidad, by Tesla TJ.
+                                
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Login -->
+            <section class="g-height-100vh d-flex align-items-center g-bg-size-cover g-bg-pos-top-center" style="background-image: url(../../assets/img-temp/1920x1080/img45.jpg);">
+                <div class="container g-py-100 g-pos-rel g-z-index-1">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8 col-lg-5">
+                            <div class="g-bg-white rounded g-py-40 g-px-30">
+
+
+
+
+                                <footer class="text-center"></footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+    <!-- End Login -->
+    
+    
+    <script>
+        function OnSuccessAdmLogin(data) {
+            if (data.value == 0)
+                Swal.fire(
+                    'Error!',
+                    data.messe,
+                    'error'
+                );
+            else if (data.value == 1)
+                window.location.href = data.messe;
+            else
+                alert("Error no encontrado");
+        } function OnFailureAdmLogin() {
+            alert("Error no encontrado");
+        }
+        function sale() {
+            //var cargar = document.getElementById("Carga").style.display="block";
+            //('#Carga').show();
+        }
+    </script>
+</body>
+</html>

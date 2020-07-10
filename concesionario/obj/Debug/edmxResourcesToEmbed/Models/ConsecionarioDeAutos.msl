@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConsecionarioDeAutosModelStoreContainer" CdmEntityContainer="ConsecionarioDeAutosEntities">
+    <EntitySetMapping Name="Anio">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Anio">
+        <MappingFragment StoreEntitySet="Anio">
+          <ScalarProperty Name="IdAnio" ColumnName="IdAnio" />
+          <ScalarProperty Name="Anio1" ColumnName="Anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Auto_Adiccionales">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Auto_Adiccionales">
+        <MappingFragment StoreEntitySet="Auto_Adiccionales">
+          <ScalarProperty Name="IdAuto_Adic" ColumnName="IdAuto_Adic" />
+          <ScalarProperty Name="IdAutos" ColumnName="IdAutos" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="IdPerformance" ColumnName="IdPerformance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutoExistencia">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.AutoExistencia">
+        <MappingFragment StoreEntitySet="AutoExistencia">
+          <ScalarProperty Name="IdAutoExistencia" ColumnName="IdAutoExistencia" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="IdAutos" ColumnName="IdAutos" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Autos">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Autos">
+        <MappingFragment StoreEntitySet="Autos">
+          <ScalarProperty Name="IdAutos" ColumnName="IdAutos" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+          <ScalarProperty Name="IdAnio" ColumnName="IdAnio" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aval">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Aval">
+        <MappingFragment StoreEntitySet="Aval">
+          <ScalarProperty Name="IdAval" ColumnName="IdAval" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApP" ColumnName="ApP" />
+          <ScalarProperty Name="ApM" ColumnName="ApM" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraDePago">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.BitacoraDePago">
+        <MappingFragment StoreEntitySet="BitacoraDePago">
+          <ScalarProperty Name="id_Bitacora" ColumnName="id_Bitacora" />
+          <ScalarProperty Name="FechaDePago" ColumnName="FechaDePago" />
+          <ScalarProperty Name="Abono" ColumnName="Abono" />
+          <ScalarProperty Name="PagoMinimo" ColumnName="PagoMinimo" />
+          <ScalarProperty Name="IdVentaAuto" ColumnName="IdVentaAuto" />
+          <ScalarProperty Name="Restante" ColumnName="Restante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApP" ColumnName="ApP" />
+          <ScalarProperty Name="ApM" ColumnName="ApM" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="FechaDeNacimiento" ColumnName="FechaDeNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TelefonoCasa" ColumnName="TelefonoCasa" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="IdAval" ColumnName="IdAval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Color">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="Color1" ColumnName="Color" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consecionario">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Consecionario">
+        <MappingFragment StoreEntitySet="Consecionario">
+          <ScalarProperty Name="IdConsecionario" ColumnName="IdConsecionario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatosFinanciamiento">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.DatosFinanciamiento">
+        <MappingFragment StoreEntitySet="DatosFinanciamiento">
+          <ScalarProperty Name="IdDatosFinanciamiento" ColumnName="IdDatosFinanciamiento" />
+          <ScalarProperty Name="NombreEnTC" ColumnName="NombreEnTC" />
+          <ScalarProperty Name="NoTarjetaC" ColumnName="NoTarjetaC" />
+          <ScalarProperty Name="IdMesExpiracion" ColumnName="IdMesExpiracion" />
+          <ScalarProperty Name="IdFechaExpiracion" ColumnName="IdFechaExpiracion" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="CPFacturacion" ColumnName="CPFacturacion" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="PrimerPago" ColumnName="PrimerPago" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdTiempoDePago" ColumnName="IdTiempoDePago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DB_Errors">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.DB_Errors">
+        <MappingFragment StoreEntitySet="DB_Errors">
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorDateTime" ColumnName="ErrorDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApP" ColumnName="ApP" />
+          <ScalarProperty Name="ApM" ColumnName="ApM" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
+          <ScalarProperty Name="IdUsuarioLogin" ColumnName="IdUsuarioLogin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpleadoSucursal">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.EmpleadoSucursal">
+        <MappingFragment StoreEntitySet="EmpleadoSucursal">
+          <ScalarProperty Name="IdEmpleadoSucursal" ColumnName="IdEmpleadoSucursal" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FechaExpiracion">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.FechaExpiracion">
+        <MappingFragment StoreEntitySet="FechaExpiracion">
+          <ScalarProperty Name="IdFechaExpiracion" ColumnName="IdFechaExpiracion" />
+          <ScalarProperty Name="FechaExpiracion1" ColumnName="FechaExpiracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MesExpiracion">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.MesExpiracion">
+        <MappingFragment StoreEntitySet="MesExpiracion">
+          <ScalarProperty Name="IdMesExpiracion" ColumnName="IdMesExpiracion" />
+          <ScalarProperty Name="MesExpiracion1" ColumnName="MesExpiracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelo">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Modelo">
+        <MappingFragment StoreEntitySet="Modelo">
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+          <ScalarProperty Name="Modelo1" ColumnName="Modelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partes">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Partes">
+        <MappingFragment StoreEntitySet="Partes">
+          <ScalarProperty Name="IdPartes" ColumnName="IdPartes" />
+          <ScalarProperty Name="NumeroDeParte" ColumnName="NumeroDeParte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartesInventario">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.PartesInventario">
+        <MappingFragment StoreEntitySet="PartesInventario">
+          <ScalarProperty Name="IdPartesInventario" ColumnName="IdPartesInventario" />
+          <ScalarProperty Name="IdPartes" ColumnName="IdPartes" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartesPrecio">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.PartesPrecio">
+        <MappingFragment StoreEntitySet="PartesPrecio">
+          <ScalarProperty Name="IdPartesPrecio" ColumnName="IdPartesPrecio" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartesPrecioBitacora">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.PartesPrecioBitacora">
+        <MappingFragment StoreEntitySet="PartesPrecioBitacora">
+          <ScalarProperty Name="IdPartesPrecioBitacora" ColumnName="IdPartesPrecioBitacora" />
+          <ScalarProperty Name="IdPartes" ColumnName="IdPartes" />
+          <ScalarProperty Name="IdPartesPrecio" ColumnName="IdPartesPrecio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Performance">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Performance">
+        <MappingFragment StoreEntitySet="Performance">
+          <ScalarProperty Name="IdPerformance" ColumnName="IdPerformance" />
+          <ScalarProperty Name="Performance1" ColumnName="Performance" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sexo">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Sexo">
+        <MappingFragment StoreEntitySet="Sexo">
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+          <ScalarProperty Name="Sexo1" ColumnName="Sexo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursal">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="IdConsecionario" ColumnName="IdConsecionario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiempoDePago">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.TiempoDePago">
+        <MappingFragment StoreEntitySet="TiempoDePago">
+          <ScalarProperty Name="IdTiempoDePago" ColumnName="IdTiempoDePago" />
+          <ScalarProperty Name="TiempoDePago1" ColumnName="TiempoDePago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoEmpleado">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.TipoEmpleado">
+        <MappingFragment StoreEntitySet="TipoEmpleado">
+          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
+          <ScalarProperty Name="TipoEmpleado1" ColumnName="TipoEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioLogin">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.UsuarioLogin">
+        <MappingFragment StoreEntitySet="UsuarioLogin">
+          <ScalarProperty Name="IdUsuarioLogin" ColumnName="IdUsuarioLogin" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contra" ColumnName="Contra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendido">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.Vendido">
+        <MappingFragment StoreEntitySet="Vendido">
+          <ScalarProperty Name="IdVendido" ColumnName="IdVendido" />
+          <ScalarProperty Name="Vendido1" ColumnName="Vendido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VentaAuto">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.VentaAuto">
+        <MappingFragment StoreEntitySet="VentaAuto">
+          <ScalarProperty Name="IdVentaAuto" ColumnName="IdVentaAuto" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdAutos" ColumnName="IdAutos" />
+          <ScalarProperty Name="IdAuto_Adic" ColumnName="IdAuto_Adic" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdVendido" ColumnName="IdVendido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VentaParte">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.VentaParte">
+        <MappingFragment StoreEntitySet="VentaParte">
+          <ScalarProperty Name="IdVentaParte" ColumnName="IdVentaParte" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZonaHoraria">
+      <EntityTypeMapping TypeName="ConsecionarioDeAutosModel.ZonaHoraria">
+        <MappingFragment StoreEntitySet="ZonaHoraria">
+          <ScalarProperty Name="IdZonaHoraria" ColumnName="IdZonaHoraria" />
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="Estado_" ColumnName="Estado_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AutosAlta" FunctionName="ConsecionarioDeAutosModel.Store.AutosAlta" />
+    <FunctionImportMapping FunctionImportName="Caracteristicas" FunctionName="ConsecionarioDeAutosModel.Store.Caracteristicas" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ConsecionarioDeAutosModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ConsecionarioDeAutosModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ConsecionarioDeAutosModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ConsecionarioDeAutosModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConsecionarioDeAutosModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ConsecionarioDeAutosModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConsecionarioDeAutosModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Login" FunctionName="ConsecionarioDeAutosModel.Store.SP_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConsecionarioDeAutosModel.SP_Login_Result">
+          <ScalarProperty Name="IdUsu" ColumnName="IdUsu" />
+          <ScalarProperty Name="IdTip" ColumnName="IdTip" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_OrdeanarCarro" FunctionName="ConsecionarioDeAutosModel.Store.SP_OrdeanarCarro" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ConsecionarioDeAutosModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ConsecionarioDeAutosModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SP_Usuario_Alta" FunctionName="ConsecionarioDeAutosModel.Store.SP_Usuario_Alta" />
+    <FunctionImportMapping FunctionImportName="SP_CompraCompletada" FunctionName="ConsecionarioDeAutosModel.Store.SP_CompraCompletada" />
+    <FunctionImportMapping FunctionImportName="SP_Abonar" FunctionName="ConsecionarioDeAutosModel.Store.SP_Abonar" />
+    <FunctionImportMapping FunctionImportName="SP_Traspaso" FunctionName="ConsecionarioDeAutosModel.Store.SP_Traspaso" />
+  </EntityContainerMapping>
+</Mapping>

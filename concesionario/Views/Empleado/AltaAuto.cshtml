@@ -1,0 +1,161 @@
+﻿@model concesionario.Models.AltaAuto
+
+@{
+    ViewBag.Title = "AltaAuto";
+    Layout = "~/Views/Shared/_Layout Empleado.cshtml";
+}
+
+<style>
+    .contenedor {
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+    }
+</style>
+
+@using (Ajax.BeginForm("Alta", "Empleado", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "frmCO", OnSuccess = "SuccessCO", OnBegin = "BeginCOC" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body ">
+                <h3>Ingresar Nuevo Tesla</h3>
+                <div class="row">
+
+                    <div class="contenedor">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Marca</label>
+                                    <span class="material-input">
+                                        @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Color</label>
+                                    <span class="material-input">
+                                        @Html.DropDownListFor(model => model.IdColor, new SelectList(ViewBag.Color, "IdColor", "Color"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Modelo</label>
+                                    <span class="material-input">
+                                        @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Año</label>
+                                    <span class="material-input">
+                                        @Html.DropDownListFor(model => model.IdAnio, new SelectList(ViewBag.Anio, "IdAnio", "Anio"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Precio</label>
+                                    <span class="material-input">
+                                        @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Sucursal</label>
+                                    <span class="material-input">
+                                        @Html.DropDownListFor(model => model.IdSucursal, new SelectList(ViewBag.Sucursal, "IdSucursal", "Sucursal"), htmlAttributes: new { @class = "custom-select custom-select-md " })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Cantidad</label>
+                                    <span class="material-input">
+                                        @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Aceptar" class="btn btn-outline-success pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text h4">
+                <h4 class="card-title">Modelos existentes</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        @Html.EJS().Grid("Grid").AllowResizing(true).AllowTextWrap().AllowSorting().AllowFiltering().Width("auto").AllowResizing().Columns(col =>
+                        {
+                            col.Field("IdAuto").HeaderText("IdAuto").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Visible(false).Add();
+                            col.Field("Marca").HeaderText("Modelo").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("IdModelo").HeaderText("IdModelo").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("IdAnio").HeaderText("IdAnio").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Anio").HeaderText("Año").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.Field("Precio").HeaderText("Precio").Visible(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                        }).AllowPaging().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Single)).PageSettings(page => page.PageSize(10)).Locale("es-mx").Render()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        $.get('@Url.Action("AutosConsecionario", "Empleado")', function (data) {
+            var grid = document.getElementById('Grid').ej2_instances[0]; // Grid instance
+            grid.dataSource = JSON.parse(data);
+        });
+    });
+</script>
+<script>
+    function SuccessCO(data, status, jqXHR) {
+        switch (data.value) {
+            case 1:
+                Swal.fire(
+                    'Correcto!',
+                    data.messen,
+                    'success'
+                );
+                location.reload();
+                break;
+
+            default:
+                break;
+        }
+
+    };
+    function BeginCOC() {
+
+    }
+</script>
